@@ -1,0 +1,61 @@
+{
+  "Name": "Demo-Web-Transcode-v1",
+  "Description": "Template for the web-standard-v1 profile. The application overrides input and output destinations.",
+  "Category": "transcode-pipeline",
+  "Settings": {
+    "TimecodeConfig": {
+      "Source": "ZEROBASED"
+    },
+    "Inputs": [
+      {
+        "AudioSelectors": {
+          "Audio Selector 1": {
+            "DefaultSelection": "DEFAULT"
+          }
+        },
+        "VideoSelector": {},
+        "TimecodeSource": "ZEROBASED"
+      }
+    ],
+    "OutputGroups": [
+      {
+        "Name": "HLS",
+        "OutputGroupSettings": {
+          "Type": "HLS_GROUP_SETTINGS",
+          "HlsGroupSettings": {
+            "Destination": "s3://REPLACE_AT_RUNTIME/hls/",
+            "SegmentLength": 6,
+            "OutputSelection": "MANIFESTS_AND_SEGMENTS",
+            "StreamInfResolution": "INCLUDE"
+          }
+        },
+        "Outputs": [
+          {
+            "Preset": "Demo-HLS-720p-AVC-v1",
+            "NameModifier": "_720p"
+          },
+          {
+            "Preset": "Demo-HLS-480p-AVC-v1",
+            "NameModifier": "_480p"
+          }
+        ]
+      },
+      {
+        "Name": "File",
+        "OutputGroupSettings": {
+          "Type": "FILE_GROUP_SETTINGS",
+          "FileGroupSettings": {
+            "Destination": "s3://REPLACE_AT_RUNTIME/file/"
+          }
+        },
+        "Outputs": [
+          {
+            "Preset": "Demo-MP4-720p-AVC-AAC-v1",
+            "NameModifier": "video"
+          }
+        ]
+      }
+    ]
+  },
+  "StatusUpdateInterval": "SECONDS_10"
+}

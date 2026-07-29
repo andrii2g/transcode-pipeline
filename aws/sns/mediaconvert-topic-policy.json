@@ -1,0 +1,19 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowEventBridgePublishFromExactRule",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "events.amazonaws.com"
+      },
+      "Action": "sns:Publish",
+      "Resource": "arn:aws:sns:eu-west-1:111122223333:demo-mediaconvert-job-state-prod",
+      "Condition": {
+        "ArnEquals": {
+          "aws:SourceArn": "arn:aws:events:eu-west-1:111122223333:rule/demo-mediaconvert-job-state-prod"
+        }
+      }
+    }
+  ]
+}

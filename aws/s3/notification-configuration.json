@@ -1,0 +1,21 @@
+{
+  "TopicConfigurations": [
+    {
+      "Id": "VideoUploadCompleted",
+      "TopicArn": "arn:aws:sns:eu-west-1:111122223333:demo-video-upload-completed-prod",
+      "Events": [
+        "s3:ObjectCreated:*"
+      ],
+      "Filter": {
+        "Key": {
+          "FilterRules": [
+            {
+              "Name": "prefix",
+              "Value": "uploads/"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

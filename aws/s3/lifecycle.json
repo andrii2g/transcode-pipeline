@@ -1,0 +1,27 @@
+{
+  "Rules": [
+    {
+      "ID": "ExpireSourceVideos",
+      "Status": "Enabled",
+      "Filter": {
+        "Prefix": "uploads/"
+      },
+      "Expiration": {
+        "Days": 30
+      },
+      "AbortIncompleteMultipartUpload": {
+        "DaysAfterInitiation": 1
+      }
+    },
+    {
+      "ID": "ExpireFailedOrTemporaryOutputs",
+      "Status": "Enabled",
+      "Filter": {
+        "Prefix": "temporary/"
+      },
+      "Expiration": {
+        "Days": 7
+      }
+    }
+  ]
+}
