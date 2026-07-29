@@ -1,0 +1,18 @@
+{
+  "source": [
+    "aws.mediaconvert"
+  ],
+  "detail-type": [
+    "MediaConvert Job State Change"
+  ],
+  "detail": {
+    "status": [
+      "INPUT_INFORMATION",
+      "PROGRESSING",
+      "STATUS_UPDATE",
+      "COMPLETE",
+      "ERROR",
+      "CANCELED"
+    ]
+  }
+}
