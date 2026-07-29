@@ -1,0 +1,25 @@
+@host = http://localhost:5080
+
+### Create a durable upload session
+POST {{host}}/uploads
+Content-Type: application/json
+
+{
+  "fileName": "sample.mp4",
+  "contentType": "video/mp4",
+  "sizeBytes": 1048576,
+  "profile": "web-standard-v1"
+}
+
+### On-premises: use the returned videoId and one-time token
+PUT {{host}}/uploads/REPLACE_WITH_VIDEO_ID/content
+X-Upload-Token: REPLACE_WITH_ONE_TIME_TOKEN
+Content-Type: video/mp4
+
+< ./sample.mp4
+
+### Poll status; no POST /transcodes is needed
+GET {{host}}/transcodes/REPLACE_WITH_VIDEO_ID
+
+### Fetch result after Completed
+GET {{host}}/transcodes/REPLACE_WITH_VIDEO_ID/result
