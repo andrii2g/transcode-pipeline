@@ -1,0 +1,24 @@
+@Demo_UploadApi_Host = http://localhost:5096
+
+### Create upload
+POST {{Demo_UploadApi_Host}}/uploads
+Content-Type: application/json
+
+{
+  "fileName": "sample.mp4",
+  "contentType": "video/mp4"
+}
+
+### Start transcode
+POST {{Demo_UploadApi_Host}}/transcodes
+Content-Type: application/json
+
+{
+  "videoId": "REPLACE_WITH_VIDEO_ID"
+}
+
+### Get status
+GET {{Demo_UploadApi_Host}}/transcodes/REPLACE_WITH_VIDEO_ID
+
+### Get result
+GET {{Demo_UploadApi_Host}}/transcodes/REPLACE_WITH_VIDEO_ID/result
